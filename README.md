@@ -6,7 +6,7 @@ serving](https://github.com/tensorflow/serving).
 * ``, `latest`
 * ``
 
-## Build devel image
+## Building
 **Tensorflow serving 1.15.0**
 ```
 TF_VERSION="1.15.0"
