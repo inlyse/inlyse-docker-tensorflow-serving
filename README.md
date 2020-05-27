@@ -3,8 +3,8 @@ This repository hosts Dockerfiles to build and distribute [tensorflow
 serving](https://github.com/tensorflow/serving).
 
 ## Supported tags and respective Dockerfile links
-* ``, `latest`
-* ``
+* `1.15.0`, `latest`
+* `1.15.0-devel`
 
 ## Building
 **Tensorflow serving 1.15.0**
