@@ -19,3 +19,6 @@ bundles/
 vendor/pkg/
 pyenv
 Vagrantfile
+.venv
+*.yaml
+*.csv

@@ -19,12 +19,13 @@ LABEL org.opensuse.version="15.2"
 
 
 RUN set -eux; \
-    zypper -n ar https://download.opensuse.org/repositories/science:/machinelearning/openSUSE_Leap_15.2/science:machinelearning.repo \
+    zypper -n ar  https://provo-mirror.opensuse.org/repositories/science:/machinelearning/openSUSE_Leap_15.2/science:machinelearning.repo \
     && zypper --gpg-auto-import-keys -n ref && zypper --no-refresh -n up \
     && zypper -n install -t pattern devel_basis \
     && zypper -n in \
         automake \
         gcc-c++ \
+        llvm \
         which \
         ca-certificates \
         curl \
