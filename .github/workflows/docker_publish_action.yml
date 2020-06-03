@@ -1,0 +1,53 @@
+name: Docker Image Release
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+
+  build-1_15_0:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Building
+      run: bash build.sh -v 1.15.0
+    - name: Push the Docker image for tensorflow 1.15.0 (devel)
+      run: docker push inlyse/tensorflow-serving:1.15.0-devel
+    - name: Push the Docker image for tensorflow 1.15.0
+      run: docker push inlyse/tensorflow-serving:1.15.0
+
+  build-1_15_0:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Building
+      run: bash build.sh -v 1.15.0 -o "--copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-msse4.1 --copt=-msse4.2 --copt=-mavx512vl"
+    - name: Push the Docker image for tensorflow 1.15.0 (devel)
+      run: docker push inlyse/tensorflow-serving:1.15.0-mavx512vl-devel
+    - name: Push the Docker image for tensorflow 1.15.0
+      run: docker push inlyse/tensorflow-serving:1.15.0-mavx512vl
+
+  build-2.1.0:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - name: Building
+      run: bash build.sh -v 2.1.0
+    - name: Push the Docker image for tensorflow 2.1.0 (devel)
+      run: docker push inlyse/tensorflow-serving:2.1.0-devel
+    - name: Push the Docker image for tensorflow 2.1.0
+      run: docker push inlyse/tensorflow-serving:2.1.0
+    - name: Tag the current as latest Docker image
+      run: docker tag inlyse/tensorflow-serving:2.1.0 --tag inlyse/tensorflow-serving:latest
+    - name: Push the latest Docker image
+      run: docker push inlyse/tensorflow-serving:latest
