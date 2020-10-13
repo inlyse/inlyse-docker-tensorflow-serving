@@ -8,9 +8,9 @@ FROM opensuse/leap:${OPENSUSE_VERSION}  as base_build
 ARG TF_SERVING_VERSION_GIT_BRANCH=master
 ARG TF_SERVING_VERSION_GIT_COMMIT=head
 
-LABEL maintainer="Inlyse UG (haftungsbeschränkt) <info@inlyse.com>"
+LABEL maintainer="inlyse GmbH <info@inlyse.com>"
 LABEL org.opencontainers.image.title="Inlyse Tensorflow Serving Container"
-LABEL org.opencontainers.image.authors="Inlyse UG (haftungsbeschränkt)"
+LABEL org.opencontainers.image.authors="inlyse GmbH (haftungsbeschränkt)"
 LABEL org.opencontainers.image.source="https://github.com/inlyse/inlyse-docker-tensorflow-serving"
 LABEL org.opencontainers.image.url="https://hub.docker.com/repository/docker/inlyse/tensorflow-serving"
 LABEL org.opencontainers.image.version="1.0.0"
